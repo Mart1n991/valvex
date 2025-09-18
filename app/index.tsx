@@ -1,37 +1,27 @@
-import { DarkTheme, DefaultTheme } from "@react-navigation/native";
-import { StatusBar } from "expo-status-bar";
-import { useTranslation } from "react-i18next";
-import { Text, useColorScheme, View } from "react-native";
+import { ROUTES } from "@/constants/routes";
+import { SignedOut, useAuth } from "@clerk/clerk-expo";
+import { Link, Redirect } from "expo-router";
+import { Text, View } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
-const Home = () => {
-  const { t } = useTranslation();
-  const colorScheme = useColorScheme();
+export default function Home() {
+  const { isSignedIn } = useAuth();
+  const insets = useSafeAreaInsets();
+
+  if (isSignedIn) {
+    return <Redirect href={ROUTES.dashboard} />;
+  }
 
   return (
-    <View>
-      <Text
-        style={{
-          color:
-            colorScheme === "dark"
-              ? DarkTheme.colors.text
-              : DefaultTheme.colors.text,
-        }}
-      >
-        {t("appName")}
-      </Text>
-      <Text
-        style={{
-          color:
-            colorScheme === "dark"
-              ? DarkTheme.colors.text
-              : DefaultTheme.colors.text,
-        }}
-      >
-        {t("welcome")}
-      </Text>
-      <StatusBar style="auto" />
+    <View style={{ padding: insets.top, paddingBottom: insets.bottom }}>
+      <SignedOut>
+        <Link href={ROUTES.signIn}>
+          <Text>Sign in</Text>
+        </Link>
+        <Link href={ROUTES.signUp}>
+          <Text>Sign up</Text>
+        </Link>
+      </SignedOut>
     </View>
   );
-};
-
-export default Home;
+}
