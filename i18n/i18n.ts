@@ -25,5 +25,5 @@ init({
 
 export default i18next;
 
-export { default as i18n } from "./i18n";
+export const i18n = i18next;
 export type Resources = typeof resources;
