@@ -3,7 +3,7 @@ import { Link, useRouter } from "expo-router";
 import React from "react";
 import { Text, TextInput, TouchableOpacity, View } from "react-native";
 
-export default function Page() {
+export default function SignInPage() {
   const { signIn, setActive, isLoaded } = useSignIn();
   const router = useRouter();
 
@@ -59,6 +59,9 @@ export default function Page() {
       <View style={{ display: "flex", flexDirection: "row", gap: 3 }}>
         <Link href="/sign-up">
           <Text>Sign up</Text>
+        </Link>
+        <Link href="/forgot-password">
+          <Text>Forgot password</Text>
         </Link>
       </View>
     </View>
