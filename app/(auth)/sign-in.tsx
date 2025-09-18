@@ -60,7 +60,7 @@ export default function SignInPage() {
         <Link href="/sign-up">
           <Text>Sign up</Text>
         </Link>
-        <Link href="/forgot-password">
+        <Link href="/forgot-password/send">
           <Text>Forgot password</Text>
         </Link>
       </View>
