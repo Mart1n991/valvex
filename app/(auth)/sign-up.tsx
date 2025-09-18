@@ -1,3 +1,4 @@
+import { ROUTES } from "@/constants/routes";
 import { useSignUp } from "@clerk/clerk-expo";
 import { Link, useRouter } from "expo-router";
 import * as React from "react";
@@ -100,7 +101,7 @@ export default function SignUpScreen() {
         </TouchableOpacity>
         <View style={{ display: "flex", flexDirection: "row", gap: 3 }}>
           <Text>Already have an account?</Text>
-          <Link href="/sign-in">
+          <Link href={ROUTES.signIn}>
             <Text>Sign in</Text>
           </Link>
         </View>

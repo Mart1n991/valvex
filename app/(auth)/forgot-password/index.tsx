@@ -1,3 +1,4 @@
+import { ROUTES } from "@/constants/routes";
 import { useSignIn } from "@clerk/clerk-expo";
 import { Stack, useRouter } from "expo-router";
 import { useState } from "react";
@@ -26,7 +27,7 @@ export default function SendResetCode() {
         strategy: "reset_password_email_code",
         identifier: email.trim(),
       });
-      router.push("/(auth)/forgot-password/verify");
+      router.push(ROUTES.forgotPasswordVerify);
     } catch (e: any) {
       setErr(e?.errors?.[0]?.longMessage || "Nepodarilo sa odoslať kód.");
     } finally {

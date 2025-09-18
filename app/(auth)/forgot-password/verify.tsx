@@ -1,3 +1,4 @@
+import { ROUTES } from "@/constants/routes";
 import { useSignIn } from "@clerk/clerk-expo";
 import { Stack, useRouter } from "expo-router";
 import { useState } from "react";
@@ -28,7 +29,7 @@ export default function VerifyCode() {
       });
       // Keď je kód správny, Clerk očakáva nové heslo:
       if ((res as any).status === "needs_new_password") {
-        router.push("/(auth)/forgot-password/new");
+        router.push(ROUTES.forgotPasswordNew);
       } else {
         setErr("Neočakávaný stav overenia. Skús znova.");
       }

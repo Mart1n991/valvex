@@ -1,3 +1,4 @@
+import { ROUTES } from "@/constants/routes";
 import { useSignIn } from "@clerk/clerk-expo";
 import { Link, useRouter } from "expo-router";
 import React from "react";
@@ -57,10 +58,10 @@ export default function SignInPage() {
         <Text>Continue</Text>
       </TouchableOpacity>
       <View style={{ display: "flex", flexDirection: "row", gap: 3 }}>
-        <Link href="/sign-up">
+        <Link href={ROUTES.signUp}>
           <Text>Sign up</Text>
         </Link>
-        <Link href="/forgot-password/send">
+        <Link href={ROUTES.forgotPassword}>
           <Text>Forgot password</Text>
         </Link>
       </View>
