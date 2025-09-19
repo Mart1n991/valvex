@@ -2,10 +2,17 @@ import { ROUTES } from "@/constants/routes";
 import { useSignIn } from "@clerk/clerk-expo";
 import { Link, useRouter } from "expo-router";
 import React from "react";
-import { Text, TextInput, TouchableOpacity, View } from "react-native";
+import {
+  Text,
+  TextInput,
+  TouchableOpacity,
+  useColorScheme,
+  View,
+} from "react-native";
 
 export default function SignInPage() {
   const { signIn, setActive, isLoaded } = useSignIn();
+  const colorScheme = useColorScheme();
   const router = useRouter();
 
   const [emailAddress, setEmailAddress] = React.useState("");
@@ -40,8 +47,8 @@ export default function SignInPage() {
   };
 
   return (
-    <View>
-      <Text>Sign in</Text>
+    <View className="bg-white dark:bg-black">
+      <Text className="text-black dark:text-white">Sign in</Text>
       <TextInput
         autoCapitalize="none"
         value={emailAddress}
@@ -62,7 +69,7 @@ export default function SignInPage() {
           <Text>Sign up</Text>
         </Link>
         <Link href={ROUTES.forgotPassword}>
-          <Text>Forgot password</Text>
+          <Text className="dark:text-white">Forgot password</Text>
         </Link>
       </View>
     </View>
